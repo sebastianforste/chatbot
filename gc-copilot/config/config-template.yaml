@@ -1,0 +1,30 @@
+# GC Copilot configuration template
+
+model_provider: openai
+chat_model: gpt-4.1-mini
+embedding_model: text-embedding-3-large
+
+retrieval:
+  type: graphrag
+  # Example endpoint for GraphRAG index server (update for your environment)
+  endpoint: http://localhost:8000
+  top_k: 8
+  citations: true
+
+modes:
+  - name: product_counsel
+    prompt_path: gc-copilot/prompts/product-counsel.md
+    default: true
+  - name: regulatory_analysis
+    prompt_path: gc-copilot/prompts/regulatory-analysis.md
+  - name: contract_review
+    prompt_path: gc-copilot/prompts/contract-review.md
+
+ui:
+  show_citations_panel: true
+  show_decision_log: true
+  allow_uploads: true
+
+# Notes
+# - Keep secrets (API keys) in environment variables, not in this repo.
+# - Swap model_provider/chat_model for Anthropic/Azure/others as needed.
